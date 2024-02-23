@@ -1,0 +1,22 @@
+﻿charset,UTF-8
+
+
+//FAAFO means "FUCK AROUND AND FIND OUT!!!" 
+name,Ari's FAAFO Ghost
+type,ghost
+
+sakura.name,Ari
+kero.name,Icarus
+
+craftman,ariisonfire
+craftmanurl,https://github.com/AriIsOnFire
+
+sstp.allowunspecifiedsend,0
+shiori,yaya.dll
+
+icon,arisquared.ico
+
+
+//ill make a balloon later -ari
+
+balloon,z_simple

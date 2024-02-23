@@ -1,0 +1,5 @@
+charset,UTF-8
+type,ghost
+name,Ari's FAAFO Ghost
+directory,ari_squared
+balloon.directory,faafo_balloon

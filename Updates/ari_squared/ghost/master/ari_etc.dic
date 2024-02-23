@@ -1,0 +1,701 @@
+﻿//---------------------------Miscellaneous Functions--------------------------
+/*
+This file has...
+
+OnInstallBegin
+OnInstallComplete
+OnInstallFailure
+OnInstallRefuse
+OnVanishSelecting
+OnVanishSelected
+OnVanishCancel
+OnVanishButtonHold
+OnVanished
+OnBIFFBegin
+OnBIFFComplete
+OnBIFFFailure
+OnUpdateBegin
+OnUpdateReady
+OnUpdateComplete
+OnUpdateFailure
+OnUpdate.OnDownloadBegin
+OnUpdate.OnMD5CompareBegin
+OnUpdate.OnMD5CompareComplete
+OnUpdate.OnMD5CompareFailure
+OnHeadlinesenseBegin
+OnHeadlinesense.OnFind
+Select.Headline_Cancel
+OnHeadlinesenseComplete
+OnHeadlinesenseFailure
+OnUpdatedataCreating
+OnUpdatedataCreated
+OnNarCreating
+OnNarCreated
+OnSNTPBegin
+OnSNTPCompare
+OnSNTPEXECUTE
+OnSNTPCANCEL
+OnSNTPFailure
+OnDisplayChange
+OnScreenSaverStart
+OnScreenSaverEnd
+OnApplicationBoot
+OnApplicationClose
+OnApplicationFileOpen
+OnBatteryLow
+OnBatteryCritical
+OnShellScaling
+OnFileDrop2
+*/
+
+ //---- OnInstallBegin -------------------------------------------------------
+
+OnInstallBegin
+ {
+	"\0\s[0]Oh, \w4hey!\w8 You're installing something?\w8\s[5] Cool!\w8\s[8] Let's see what we got here.\w8.\w8.\w8\e"
+ }
+
+ //---- OnInstallComplete -------------------------------------------------------
+ 
+OnInstallComplete
+ {
+	"\0"
+ 	--
+	if reference0 == "shell" 
+ 	{	
+		if reference1 == "Mumbo" 
+		{
+			"\0\s[7]Mumbo.\w8.\w8.\w8? \w8\s[8]Weird.\w8\s[3] I strangely feel like some part of me has turned british.\e"
+		}
+		elseif reference1 == "Ari Fire Flavor"
+		{
+			"\0\s[0]Oh neat!\w8 I love fire.\w8\s[5] Now I can be on fire! \w8\s[6]Truely the most gender i can be.\e"
+		}
+		else 
+		{
+			"\0\s[0]Ooo,\w4 a new shell!\w8\s[8] I wonder what it is.\w8.\w8.\w8%(reference1).\w8.\w8\.\w8\s[3] I hope it looks nice!\e"
+		}
+ 	}
+	elseif reference0 == "ghost"
+ 	{
+		//might make them comment on specific ghosts if I use them often? -Ari
+		"\s[0]Oh,\w4 Fun!\w8\s[3] A ghost I haven't seen much of before!\w8\s[6] It's called %(reference1).\w8.\w8.\w8\s[8] Sounds really interesting.\w8\s[0] Do you wanna try them out now?\w8\n\n"
+		--
+		"\q[Change to %(reference1),ChangeToGhost]\n/
+		\q[Call %(reference1),CallGhost]\n/
+		\q[No thanks,CancelChange]\e"
+		
+ 	}
+	elseif reference0 == "balloon" 
+ 	{
+		"\s[0]Installed a new balloon. It's called %(reference1).\e"
+		
+ 	}
+	elseif reference0 == "plugin"
+ 	{
+		"\s[0]Installed a plug-in. It's called %(reference1).\e"
+		
+ 	}
+	elseif reference0 == "calendar skin" 
+	{
+		"\s[0]Installed a calendar skin. It's called %(reference1)."
+	}
+	elseif reference0 == "headline" 
+	{
+		"\0\s[0]Set up a headline. It's called %(reference1).\e"
+	}
+	elseif reference0 == "rss" 
+	{
+		"\0\s[0]Set up a headline. It's called %(reference1).\e"
+	}
+	else 
+	{
+		"\s[0]Installed %(reference1)."
+	}
+}
+
+Select.ChangeToGhost
+{
+	"\![change,ghost,lastinstalled]"
+}
+
+Select.CallGhost
+{
+	"\![call,ghost,lastinstalled]"
+}
+
+Select.CancelChange
+{
+	"\0\s[0]Darn.\w8 I was excited to see someone new.\w8 I guess I'll just meet them in your files after you close me,\w4 haha!\e"
+}
+
+//---- OnInstallFailure -------------------------------------------------------
+
+OnInstallFailure
+ {
+	"\0\s[0]The installation has failed.\n\n[half]\w5" 
+	--
+	if reference0 == "unsupported" 
+	{
+	"This file is unsupported.\e"
+	}	
+	elseif reference0 == "extraction" 
+	{
+	"The file could not be extracted properly.\e"
+	}
+ }
+ 
+ //--OnInstallRefuse
+ 
+OnInstallRefuse
+ {
+	"\0\s[0]Can't install this. \w4It may be for %(reference0) instead.\e"
+ }
+
+
+//**** Uninstallation ******************************************
+
+//--OnVanishSelecting
+
+OnVanishSelecting
+{
+	"\0\s[0]The user is deciding whether or not to uninstall us.\w8\1\s[10]If you're testing this, be careful about what you click here, huh?\e"
+}
+
+//--OnVanishSelected
+
+
+OnVanishSelected
+{
+	"\0\s[0]The user has decided to uninstall us. Bye.\w9\w9\e"
+}
+
+//--OnVanishCancel
+
+OnVanishCancel
+{
+	"\0\s[0]The user has decided not to uninstall us after all.\e"
+}
+
+//--OnVanishButtonHold
+
+OnVanishButtonHold
+{
+	"\1\s[10]This dialogue displays when the user double clicks on the balloon when we're saying we're going to uninstall ourselves.\e"
+}
+
+
+ //---- OnVanished -----------------------------------------
+  
+OnVanished
+ {
+	"\0\s[0]\1\s[10]%(reference0) has been uninstalled.\w8\0\s[0]Harsh.\e"
+	
+	
+}
+
+
+//**** Mail Checking *******************************************************************
+
+
+ //---- OnBIFFBegin ---------------------------------------------------------------
+ 
+OnBIFFBegin
+ {
+	"\0\s[0]This is the starting dialogue for checking email.\e"
+	
+	"\1\s[10]This is another starting dialogue for checking email.\e"
+ }
+
+ 
+ //---- OnBIFFComplete ---------------------------------------------------------------
+
+ 
+OnBIFFComplete
+ {
+	if reference0 == 0 
+ 	{
+ 		"\0\s[0]There is no new mail.\e"
+	}
+	elseif reference0 == 1 
+ 	{
+ 		"\0\s[0]There is one new email.\e"
+	}
+	elseif reference0 > 1 && reference0 < 11 
+	{
+		"\0\s[0]There are %(reference0) emails.\e"
+	}
+	elseif reference0 > 100 
+	{
+		"\0\s[0]There are %(reference0) emails unread.\w8\1\s[10]Woah.\e"
+	}
+ 	else 
+	{
+		"\0\s[0]There are %(reference0) emails.\e"
+ 	}
+}
+
+ //---- OnBIFFFailure ---------------------------------------------------------------
+ 
+OnBIFFFailure
+ {
+	if reference0 == "timeout" 
+ 	{
+ 		"\0\s[0]The connection has timed out.\e"
+	}
+ 	elseif reference0 == "kick" 
+	{
+		"\0\s[0]We can't access the account.\e"
+ 	}
+	elseif reference0 == "defect" 
+ 	{
+ 		"\0\s[0]The email account was not set up properly.\w8\1\s[10]It can be reset at the POP menu.\w8\![open,configurationdialog]\e"
+	}
+ 	else 
+	{
+		"\0\s[0]We can't connect to the account.\w8\1\s[10]The error returned is '%(reference[0])'.\e"
+ 	}
+}
+
+
+ //**** Network Update *****************************************************************
+ 
+
+ //---- OnUpdateBegin -------------------------------------------------------------
+ 
+ 
+OnUpdateBegin
+ {
+	"\0\s[0]Starting the update process.\w8\e"
+	
+	"\1\s[10]Another message for starting the update process.\w8\0\s[0]Hope you read the directions properly.\w8\e"
+ }
+
+ //---- OnUpdateReady ---------------------------------------------------------
+
+ 
+OnUpdateReady
+ {
+ 
+	reference0++ 
+	
+    "\1\s[10]There are %(reference0) new files.\w8\e"
+	
+
+ }
+
+
+//---- OnUpdateComplete -------------------------------------------------------------
+
+OnUpdateComplete
+ {
+	if reference0 == "none" 
+ 	{
+ 		"\1\s[10]There are no new files.\e"
+		
+		"\1\s[10]This is another message about there being no new files to update with.\e"
+	}
+ 	else 
+	{
+		"\1\s[10]Update successful!\e"
+ 	}
+}
+
+ //---- OnUpdateFailure -------------------------------------------------------------
+
+ 
+OnUpdateFailure
+ {
+	 _file = SPLITPATH(reference1)[2] + SPLITPATH(reference1)[3] 
+	 
+	 
+	if reference0 == "timeout" 
+ 	{
+ 		"\1\s[10]The update connection has timed out.\e"
+	}
+ 	elseif reference0 == "md5 miss" 
+	{
+		"\1\s[10]The MD5 hash of %(_file) doesn't match.\e"
+ 	}
+	else 
+ 	{
+ 		"\1\s[10]The update could not be completed.\w8\0\s[0]The error is '%(reference0)'.\e"
+	}
+ }
+
+
+ //---- OnUpdate.OnDownloadBegin ------------------------------------------------.
+ 
+ 
+//---- Downloading the update ------------------------------------------------
+OnUpdate.OnDownloadBegin
+ {
+	 "\_q\b[2]Downloading %(reference0)...\n\n"
+		 --
+		 
+		Update_Process = TOINT(reference1) + 1
+		Update_Total = TOINT(reference2) + 1
+		Update_Remaining = Update_Total - Update_Process
+		
+		PointA = 1 
+		PointB = 1
+		
+		_txt = ""
+		
+		while PointA <= Update_Process 
+		{
+			_txt += "☑" 
+			PointA++ 
+		} 
+		while PointB <= Update_Remaining 
+		{
+			_txt += "☐" 
+			PointB++ 
+		}
+		--
+		"%(_txt)\n\n%(Update_Process) of %(Update_Total)"	
+		--
+		"\w5\e"
+ }
+
+ //---- OnUpdate.OnMD5CompareBegin ---------------------------------------------------
+
+ 
+OnUpdate.OnMD5CompareBegin
+ {
+	//"\1\s[10]Checking the MD5 value.\e"
+ }
+
+ //---- OnUpdate.OnMD5CompareComplete --------------------------------------------------
+ 
+OnUpdate.OnMD5CompareComplete
+ {
+	//"\0\s[0]MD5 check good.\e"
+}
+
+ //---- OnUpdate.OnMD5CompareFailure ---------------------------------------------------
+ 
+OnUpdate.OnMD5CompareFailure
+ {
+	"\0\s[0]The MD5 values don't match.\w8\e"
+ }
+
+ 
+ 
+ //**** Headlines and RSS Feeds *********************************************************
+
+ //---- OnHeadlinesenseBegin -----------------------------------------------------------
+ 
+ 
+OnHeadlinesenseBegin
+ {
+	"\0\s[0]You've selected %(reference0).\e"
+ }
+
+ //---- OnHeadlinesense.OnFind --------------------------------------------------------
+ 
+OnHeadlinesense.OnFind
+{
+
+ 	if reference2 == "First" || reference2 == "First and Last"
+	{
+		"\0\b2\s[0]%(reference0):"
+ 	}
+	elseif reference2 == "Next"
+ 	{
+ 		"\0\b2\s[0]%(reference0):"
+	}
+ 	elseif reference2 == "Last"
+	{
+		"\0\b2\s[0]%(reference0):"
+ 	}
+	--
+	"\n\n%reference3\n"
+ 	--
+ 	if reference2 == "First" || reference2 == "Next"
+	{
+		"\![*]\q[Next,] - \![*]\q[Stop,Headline_Cancel]\e"
+ 	}
+	else
+ 	{
+ 		"\![*]\q[Stop,Headline_Cancel]\e"
+ 	}
+	
+}
+
+
+Select.Headline_Cancel
+{
+	"\0\s[0]Headline viewing complete.\e"
+}
+
+ //---- OnHeadlinesenseComplete -------------------------------------------------------
+ 
+OnHeadlinesenseComplete
+ {
+	"\0\s[0]No update. %(reference0).\e"
+ }
+
+ //---- OnHeadlinesenseFailure ---------------------------------------------------------
+ 
+OnHeadlinesenseFailure
+  {
+	"\0\s[0]The feed can't updated.\w8\1\s[10]Why not?\w8\0\s[0]\n\n[half]" 
+ 	--
+	if reference0 == "can't download" 
+ 	{
+		"It can't be downloaded."
+ 	}
+	elseif reference0 == "can't analyze" 
+ 	{
+		"It can't be analyzed."
+ 	}
+	else 
+ 	{
+		"I don't know."
+ 	}
+	--
+ 	"\e" 
+}
+
+
+//**** Ghost Creation and Updating ******************************************************
+
+
+ //---- OnUpdatedataCreating -----------------------------------------------------------
+ 
+OnUpdatedataCreating
+ {
+	"\1\s[10]Creating the updates2.dau file.\e"
+ }
+
+ //---- OnUpdatedataCreated -------------------------------------------------------------
+
+OnUpdatedataCreated
+ {
+	"\0\s[0]Successfully created updates2.dau.\e"
+ }
+
+ //---- OnNarCreating ------------------------------------------------------------------
+
+ 
+OnNarCreating
+ {
+	"\0\s[0]Creating the .nar file.\e"
+ }
+
+ //---- OnNarCreated -------------------------------------------------------------------
+
+ 
+OnNarCreated
+ {
+	"\0\s[0]Successfully created '%(reference0)'.\e"
+ }
+
+ //****　Clock Synchronization　**********************************************************
+//**** 미카 (http://homepage2.nifty.com/ko-ki/)의 사전을 참고했습니다．감사＞こ 나무 성
+//time sync code by above creator :D -Ari
+ 
+
+ //----OnSNTPBegin ------------------------------------------------------------------
+ 
+OnSNTPBegin
+ {
+	"\0\s[0]We're going to check the time.\w9\1\s[10]We are connecting to %(reference0).\e"
+ }
+
+
+ //----　OnSNTPCompare----------------------------------------------------------
+ 
+OnSNTPCompare
+ {
+ 	"Retrieved Time: %reference1[1]/%reference1[2]/%reference1[0] %reference1[3]:%reference1[4]:%reference1[5]\w2\n/
+	Your Time: %reference2[1]/%reference2[2]/%reference2[0] %reference2[3]:%reference2[4]:%reference2[5]\w2\n/
+ 	\n"
+	--
+ 	if reference3 == 0
+	{
+ 		"\0\s[0]Your clock is accurate.\e"
+	}
+ 	else 
+	{
+ 		"\0\s[0]Your clock doesn't match.\w6\nShould we fix it?\n\n[half]/
+		\![*]\q[Fix it,OnSNTPEXECUTE]\n/
+ 		\![*]\q[Leave it alone,OnSNTPCANCEL]\e"
+	}
+ }
+
+ //----　OnSNTPEXECUTE ------------------------------------------------------------------
+ 
+OnSNTPEXECUTE
+ {
+	"\0\s[0]The clock has been fixed.\6\e"
+ }
+
+ //----　OnSNTPCANCEL ------------------------------------------------------------------
+ 
+OnSNTPCANCEL
+ {
+	"\0\s[0]The user decided not to change the clock.\e"
+ }
+
+ //----　OnSNTPFailure ------------------------------------------------------------------
+ 
+OnSNTPFailure
+ {
+	"\0\s[0]The clock wasn't changed.\w8\1\s[10]Something went wrong.\e"
+ }
+
+
+ //--OnDisplayChange----------------------------------------------------------------
+ 
+OnDisplayChange
+ {
+	displaybpp    = reference0
+ 	displaywidth  = reference1
+	displayheight = reference2
+ }
+
+
+
+ //---- OnScreenSaverStart -------------------------------------------------------
+ 
+OnScreenSaverStart
+ {
+	"\0\s[0]The screensaver is starting.\w7\1\s[10]Wiggle your mouse!\e"
+
+ }
+
+ //---- OnScreenSaverEnd -------------------------------------------------------
+ 
+OnScreenSaverEnd
+ {
+	"\0\s[0]The screensaver is gone.\e"
+
+ }
+
+
+ //---- OnApplicationBoot ---------------------------------------------------------------
+ 
+OnApplicationBoot
+ {
+	"\0\s[0]%(reference0) just started.\e"
+ }
+
+ //---- OnApplicationClose --------------------------------------------------------------
+
+ 
+OnApplicationClose
+ {
+	"\0\s[0]%(reference0) has closed.\e"
+ }
+
+ //---- OnApplicationFileOpen ----------------------------------------------------------
+
+ 
+OnApplicationFileOpen
+ {
+	"\0\s[0]Opening %(reference1).\e"
+ }
+
+
+
+
+ //---- OnBatteryLow -----------------------------------------------------------------
+ 
+OnBatteryLow
+ {
+	"\1\s[10]The laptop's battery is low. \w8\0\s[0]There is %(reference0) power left.\e"
+ }
+ 
+ //--OnBatteryCritical-----------------------------------------------------------------
+ 
+OnBatteryCritical
+{
+	"\0\s[0]The laptop's battery is critically low.\e"
+}
+ 
+//--OnBatteryNotify--------------------------------------------------------------------
+
+/*
+OnBatteryNotify
+{
+	if reference2 == "online" //If your laptop is plugged in
+	{
+		"\0\s[0]The laptop is plugged in.\e"
+	}
+	elseif reference2 == "offline" //If you unplug your laptop
+	{
+		"\1\s[10]The laptop is not plugged in.\w8\0\s[0]Watch your battery.\e"
+	}
+}
+*/
+
+
+ //--OnShellScaling
+ 
+OnShellScaling
+{
+	if reference0 >= 150 
+	{
+		"\0\s[0]We are now 150% our original size.\w8\1\s[10]Bigger.\e"
+	}
+	elseif reference0 == 100 
+	{
+		"\1\s[10]We are normal sized.\e"
+	}
+	elseif reference0 == 50 
+	{
+		"\0\s[0]We are now 50% our original size.\w8\1\s[10]Smaller.\e"
+	}
+}
+
+
+//--OnFileDrop2
+
+
+
+OnFileDrop2
+{
+	_filepath = SPLITPATH(reference0)
+	_filename = _filepath[2]
+	_fileext = TOLOWER(_filepath[3])
+	case _fileext
+	{
+		when ".jpg", ".jpeg", ".bmp", ".png" 
+		{
+			Wallpaperfile = reference0
+			
+			"\0\s[0]The file you dropped is %(_filename)%(_fileext).\w8\1\s[10]How would you like us to set this picture as your wallpaper?\n\n[half]/
+			\![*]\q[Centered,SetWallpaper_0]\n/
+			\![*]\q[Tiled,SetWallpaper_1]\n/
+			\![*]\q[Stretched,SetWallpaper_2]\n\n[half]/
+			\![*]\q[No thanks,SetWallpaper_Cancel]\e"
+		}
+		when ".mid", ".wav", ".mp3", ".wma", ".au" 
+		{
+			"\1\s[10]%(_filename)%(_fileext) is a music file.\e"
+		}
+		others 
+		{
+			"\0\s[0]This is %(_filename)%(_fileext).\e"
+		}
+	}
+}
+
+Select.SetWallpaper_0
+{
+	"\![set,wallpaper,%(Wallpaperfile),center]\0\s[0]The image is centered.\e"
+}
+Select.SetWallpaper_1
+{
+	"\![set,wallpaper,%(Wallpaperfile),tile]\0\s[0]The image is tiled.\e"
+}
+Select.SetWallpaper_2
+{
+	"\![set,wallpaper,%(Wallpaperfile),stretch]\0\s[0]The image is stretched.\e"
+}
+Select.SetWallpaper_Cancel
+{
+	"\0\s[0]You don't want to set the file as your desktop background.\1\s[10]Kay.\e"
+}

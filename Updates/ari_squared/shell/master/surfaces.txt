@@ -1,0 +1,225 @@
+//---------------------------Surfaces.txt--------------------------
+
+//--The Main Character's Poses---------------------------------------------------------
+
+surface0
+
+{
+	collisionex0,Head,region,collisions0.png,255,0,0
+	collisionex1,Face,region,collisions0.png,0,0,255
+
+	element0,overlay,surface0.png,0,0
+
+
+//*********************Advanced User Info*******************************
+//An element doesn't need to be the first frame of an animation, it can also be the last one. This can come in handy for certain animations that only run once.
+//I'll come back to this -Ari
+//***********************************************************************
+
+0interval,random,4
+0pattern0,-1,10,overlay,0,0
+0pattern1,1002,5,overlayfast,0,0
+0pattern2,1001,10,overlayfast,0,0
+0pattern3,-1,3,overlay,0,0
+
+1interval,talk,4
+1pattern0,0,0,alternativestart,[2.3.4]
+
+2interval,never
+2pattern0,1102,10,overlay,0,0
+2pattern1,1101,13,overlay,0,0
+2pattern2,-1,10,overlay,0,0
+
+3interval,never
+3pattern0,1101,14,overlay,0,0
+3pattern1,-1,10,overlay,0,0
+
+4interval,never
+4pattern0,1102,14,overlay,0,0
+4pattern1,-1,10,overlay,0,0
+
+}
+
+//Main Character Embarrassed pose
+surface1
+{
+	collisionex0,Head,region,collisions2.png,255,0,0
+	collisionex1,Face,region,collisions2.png,0,0,255
+	
+	element0,overlay,surface1501.png,0,0
+}
+
+//Main Character Surprised pose
+surface2
+{
+	collisionex0,Head,region,collisions1.png,255,0,0
+	collisionex1,Face,region,collisions1.png,0,0,255
+	
+	element0,overlay,surface1502.png,0,0
+}
+
+//Main Character Worried pose
+surface3
+{
+	collisionex0,Head,region,collisions3.png,255,0,0
+	collisionex1,Face,region,collisions3.png,0,0,255
+	
+	element0,overlay,surface1503.png,0,0
+}
+
+//Main Character Sad/Disappointed pose
+surface4
+{
+	collisionex0,Head,region,collisions4.png,255,0,0
+	collisionex1,Face,region,collisions4.png,0,0,255
+	
+	element0,overlay,surface1504.png,0,0
+}
+
+//Main Character Smiling pose
+surface5
+{
+	collisionex0,Head,region,collisions5.png,255,0,0
+	collisionex1,Face,region,collisions5.png,0,0,255
+	
+	element0,overlay,surface1505.png,0,0
+}
+
+//Main Character Contented pose
+surface6
+{
+	collisionex0,Head,region,collisions0.png,255,0,0
+	collisionex1,Face,region,collisions0.png,0,0,255
+	
+	element0,overlay,surface1506.png,0,0
+}
+
+//Main Character Angry pose
+surface7
+{
+	collisionex0,Head,region,collisions0.png,255,0,0
+	collisionex1,Face,region,collisions0.png,0,0,255
+
+	element1,overlay,surface1507.png,0,0
+}
+
+//Main Character Thoughtful Pose
+surface8
+{
+	collisionex0,Head,region,collisions0.png,255,0,0
+	collisionex1,Face,region,collisions0.png,0,0,255
+
+	element1,overlay,surface1508.png,0,0
+}
+
+//Main Character Bored pose
+surface9
+{
+	collisionex0,Head,region,collisions6.png,255,0,0
+	collisionex1,Face,region,collisions6.png,0,0,255
+	
+	element1,overlay,surface1509.png,0,0
+}
+
+
+//--The Side Character's poses------------------
+
+surface10
+{
+//collision0,58,199,85,218,Face
+//collision1,96,128,140,162,Point
+
+
+element0,overlay,surface10.png,0,0
+
+//Blinking
+//0interval,random,4
+//0pattern0,-1,10,overlay,0,0
+//0pattern1,2002,5,overlayfast,0,0
+//0pattern2,2001,10,overlayfast,0,0
+//0pattern3,-1,3,overlay,0,0
+
+
+//1interval,talk,4
+//1pattern0,0,0,alternativestart,[2.3.4]
+
+//2interval,never
+//2pattern0,1102,10,overlay,0,0
+//2pattern0,1101,13,overlay,0,0
+//2pattern1,-1,10,overlay,0,0
+
+//3interval,never
+//3pattern0,1101,14,overlay,0,0
+//3pattern1,-1,10,overlay,0,0
+
+//4interval,never
+//4pattern0,1102,14,overlay,0,0
+//4pattern1,-1,10,overlay,0,0
+}
+
+
+
+
+//--surface.append-------------------------------------------------------------------
+//Surface.append basically applies the coding within the brackets to the poses specified in the number range. Specifically in this case it applies to collisions. If the collision areas for your ghost don't change very much from pose to pose, then you can set them here for multiple surfaces at once and save yourself some time.
+
+//surface.append500-590 
+
+//{
+//collision0,15,16,111,48,Face
+//collision1,40,50,102,84,Point
+
+//--bind-------------------------------------------------------------------------------
+//I'll come back to this. - Ari
+//Bind is an interval function only used for dress-up items, therefore if your ghost has no dress-up items, you will not need to bind anything and can safely disregard this. See the walkthrough page about clothing for more details about bind.
+
+//51interval,bind
+//51pattern0,999,2,add,0,0
+
+//One final note on bind, note that it is also under surface.append along with the collisions up there. Meaning that this clothing would bind across those multiple surfaces just like the collisions.
+
+//You can use surface.append to technically apply anything across multiple poses, I'm pretty sure... even images. I haven't messed with this too much myself, but I'm pretty sure it's possible.
+//}
+
+
+//--Unique Collision cursors------------------
+
+sakura.cursor 
+{ 
+	mouseup0,Head,system:hand 
+	mousedown0,Head,system:grip 
+	mouseup1,Face,system:hand 
+	mousedown1,Face,system:grip 
+} 
+
+//"arrow", "cross", "no", "hand", "grip", "finger", "wait", "text", "move", and "help".
+
+
+//--Tooltips------------------
+
+sakura.tooltips 
+{ 
+	Head,Looks fluffy... 
+	Face,Watch the glasses!  
+}
+
+//--Surface.alias------------------
+
+//seems helpful for later. I'll check out seriko more some other time... - Ari
+
+//There is another function along the same lines of surface.append and it's surface.alias. What it does is assign a range of numbers to a single number or word that can be called using \s[].
+
+//sakura.surface.alias
+//{
+//6666,[1229,1230,1231,1235]
+//}
+
+//What this means is that I could then go \s[6666] in dialogue and it would call any of these four Surfaces in the brackets. You can do words as well, like creepy,[1229,1230,1231,1235], and then you could call it with \s[creepy]. This may sound like a convenient shortcut to using words instead of numbers for your ghost's expressions, but I'd probably stick with numbers, really. It just feels like it'd backfire on you eventually.
+//You can do the same thing with the side character by using kero instead of sakura.
+
+//kero.surface.alias
+//{
+//6667,[1228,1232,1233]
+//6668,[1228,1232,1233,1234]
+//}
+//And as you can see, you can have multiple surface aliases set up at any point. In this example, kero has both 6667 and 6668 defined as a range of Surfaces. So \s[6667] would call one of those three Surfaces, and \s[6668] would call one of those four Surfaces.

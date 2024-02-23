@@ -1,0 +1,484 @@
+﻿//---------------------------Booting and Ending--------------------------
+
+/* This file has...
+
+OnFirstBoot
+NameInput
+First pronoun stuff
+GetDaySlot/GetTimeSlot
+OnBoot
+normalboottalk
+OnClose
+OnWindowStateRestore
+OnGhostChanging
+OnGhostChanged
+OnShellChanging
+OnShellChanged
+OnDressupChanged
+*/
+
+//--OnFirstBoot--
+
+OnFirstBoot : all
+{
+
+
+ 	lastTalk = "" 
+	passhour = 0
+	passmin = 0 
+	passsec = 0 
+ 	username         = "USER" 
+	stroke           = 0	
+ 	teachusername    = 0	
+	mikireflag       = 0	
+ 	aitalkinterval = 300 
+ 	birthdayprint = "????" 
+	talktime = "5 minutes" 
+	deleteshitai = "OFF" 
+	nowshell = "master" 
+	firstboot = 1 
+	
+	if reference0 == 0 
+ 	{
+		
+		
+		"\1\s[10]\0\s[7].\w8.\w8.\w8 Huh? \w8\w8\w8\s[2]Oh! \w8\w6\n\n[half]\s[3]Sorry,\w4 I wasn't ready to be called yet. \w6\s[0]That's okay, \w4\s[5]Let's just get set up really quick, \w4yeah?\e"
+	
+		"Now we're going to ask the user the first question about themselves, namely what pronouns they want us to use.\w8\0\s[0]\n\n[half]This will let us construct grammatically correct sentences referring to the user later.\x\w8\1\c\s[10]How should we refer to you, user?\n\n[half]"
+		"\w5\_q\![*]\q[He/Him/His,choicefirsthehim]\n"
+		"\![*]\q[She/Her/Hers,choicefirstsheher]\n"
+		"\![*]\q[They/Them/Their,choicefirsttheythem]\e"
+		
+ 	}
+	else
+ 	{
+ 		{
+ 		"\1\s[10]\0\s[2]WOAH!\w8\w8\s[3] Wasn't expecting to be brought back\s[4].\w8.\w8.\w8\n\n[half]\s[1]Hey, \w4Maybe.\w8.\w8.\w8\s[7] Don't uninstall me again? \w4\n\n[half]\s[8]Don't get me wrong, \w4It's your computer, \w4\s[9]but being uninstalled isn't fun. \w8\w8\n\n[half]\s[5]That's okay, \w4I forgive you! \w4\s[0]I just want you to be happy, \w4ya know?\e"
+		}
+ 	}
+}
+
+
+//&&&&&&&
+//*********************************
+//NAME/PRONOUNS START
+//*********************************
+//&&&&&&&
+
+//This section is only for people who have their ghost ask the user directly for their name/pronouns up above. If you aren't doing that, you can ignore this.
+
+
+//Below are the choices that were defined at the end of the OnFirstBoot dialogue up there. These define the values your ghost will be using for pronouns according to what the user selected.
+
+Select.choicefirsthehim
+{
+	presuffix = "masculine"
+	them = "him"
+	they = "he"
+	their = "his"
+	theyre = "he's"
+	--
+	NameInput
+}
+
+Select.choicefirstsheher
+{
+	presuffix = "feminine"
+	them = "her"
+	they = "she"
+	their = "her"
+	theyre = "she's"
+	--
+	NameInput
+}
+
+Select.choicefirsttheythem
+{
+	them = "them"
+	they = "they"
+	their = "theirs"
+	theyre = "they're"
+	--
+	NameInput
+}
+
+
+//--NameInput
+
+NameInput
+{
+	
+	"\0\s[5]Great! \w8\s[8]Now.\w8.\w8.\w8\s[0] What's your name?\![open,inputbox,OnNameTeach,-1]\e"
+}
+
+//&&&&&&&
+//*********************************
+//NAME/PRONOUNS END
+//*********************************
+//&&&&&&&
+
+
+
+//--timeslot
+
+timeslot
+{
+	if hour >= 5 && hour <= 8
+	{	"earlymorning"	}
+	elseif hour >= 9 && hour <= 11
+	{	"morning"	}
+	elseif hour >= 12 && hour <= 14
+	{	"lunch"	}
+	elseif hour >= 15 && hour <= 17
+	{	"afternoon"	}
+	elseif hour >= 18 && hour <= 20
+	{	"evening"	}
+	elseif hour >= 21 && hour <= 24
+	{ "latenight"	}
+	else
+	{ "midnight" }
+}
+
+//--dayslot
+
+dayslot
+{
+	"%(month)month %(day)day"
+}
+
+
+//-----------------------Normal Booting----------------------------
+
+//--OnBoot
+
+OnBoot
+ {
+	lastTalk = ""
+	passhour = 0
+	passmin = 0
+	passsec = 0
+	
+ 	"\0\s[0]\1\s[10]"
+
+	--
+	
+	if dayslot == userbirthday
+	
+	{
+				"\0\s[5]HEEEEEEYYYYY!!!! \w8\s[0]Happy birthday, \w4%(username)! \w8\s[6]I hope it's a good one!\e" 
+	}
+	
+	elseif dayslot == "6month 10day" 
+	
+	{
+				"\0\s[0]Today is June 10! \w8\s[5]That means it's my birthday! \w8\s[1]No need to wish me a happy birthday, \w4\s[3]but I won't stop you if you do. \w8\s[6]Honestly,\w4 I'm just happy to spend time with you!\e"
+	}
+	elseif dayslot == "7month 4day"
+	{
+				"\1\s[10]It's the fourth of July.\e"
+	}
+	else
+	{
+		"%(normalboottalk)"
+	}
+
+}
+
+
+//--normalboottalk
+
+normalboottalk
+{
+	"\0\s[0]Here is some boot dialogue.\e"
+	
+	"\1\s[0]Here is some more boot dialogue.\e"
+	
+	if weekday == 6 && hour >= 19 
+		{
+		"\0\s[0]It's Saturday night.\e"
+		}
+	elseif RAND(100) < 40 /
+		{
+			"\0\s[0]This is one of the random boot conversations.\w8\1\s[10]The random number drawn was less than forty.\e"
+	
+			"\1\s[10]This is another one of the random boot conversations.\w8\0\s[0]The random number was again less than forty.\e"
+	
+			"\0\s[0]This is the third random boot conversation.\w8\1\s[10]The random number was less than forty.\e"
+		}
+ 	else
+ 	{
+		
+		if timeslot == "earlymorning" 
+		{
+			"\0\s[0]This is an early morning boot dialogue.\w8\1\s[10]Between the hours of five and eight.\e"
+		
+			"\1\s[10]This is another early morning boot dialogue.\w8\0\s[0]Again, between the hours of five and eight.\e"
+		
+			"\1\s[10]This is the third early morning boot dialogue.\w8\0\s[0]Between the hours of five and eight.\e"
+		}
+		elseif timeslot == "morning"
+		{
+			"\0\s[0]This is a morning boot dialogue.\e"
+		
+			"\1\s[10]This is another morning boot dialogue.\w8\0\s[0]Yup.\e"
+		}
+		elseif timeslot == "lunch"
+		{
+			"\0\s[0]This is a lunch boot dialogue.\1\s[10]Sure is.\e"
+		
+			"\1\s[10]This is another lunch boot dialogue.\e"
+		}
+		elseif timeslot == "afternoon"
+		{
+			"\1\s[10]This is an afternoon boot dialogue.\w8\0\s[0]That it is.\e"
+		}
+		elseif timeslot == "evening"
+		{
+			"\0\s[0]This is an evening boot dialogue.\1\s[10]Between the hours of 18 and 20.\e"
+		}
+		elseif timeslot == "latenight"
+		{
+			"\0\s[0]This is a late night boot dialogue.\1\w8\s[10]Between 21 and 24.\e"
+		
+			"\0\s[0]This is another late night boot dialogue.\1\w8\s[10]That it is.\e"
+		
+			"\1\s[10]This is the third late night boot dialogue.\w8\0\s[0]Between 21 and 24.\e"
+		}
+		else //the last timeslot we haven't done is midnight, which is what's under here.
+		{
+			"\0\s[0]This is a middle of the night boot dialogue.\1\w8\s[10]From midnight to five.\e"
+			
+			"\0\s[0]This is another middle of the night boot dialogue.\1\w8\s[10]That it is.\e"
+		
+			"\1\s[10]This is the third middle of the night boot dialogue.\w8\0\s[0]Very late at night.\e"
+		}
+	}
+	
+}
+
+
+OnClose
+ {
+	 
+	 "\0\s[0]This is some random close dialogue.\w8\w8\-"
+	 
+	 "\1\s[0]This is another random close dialogue.\w8\w8\-"
+	
+		if passmin >= 5 || passhour > 0	
+		{
+			if RAND(100) < 40 
+			{
+				"\0\s[0]This is a random close dialogue.\w8\1\s[10]The random number generator chose something below 40.\w8\w8"
+			}
+			else
+			{
+				if timeslot == "earlymorning"
+					{
+						"\1\s[10]This is an early morning close dialogue.\w8\0\s[0]From 5 to 8.\w8"
+						
+						"\0\s[0]This is another early morning close dialogue.\w8\1\s[10]Yup.\w8\w8"
+					}
+				elseif timeslot == "morning"
+					{
+						"\0\s[0]This is a morning close dialogue.\w8\w8"
+					}
+				elseif timeslot == "lunch"
+					{
+						"\0\s[0]This is a lunch close dialogue.\w8\1\s[10]Yup.\w8"
+						
+						"\0\s[0]This is another lunch close dialogue.\w8\1\s[10]In the middle of the day.\w8"
+					}
+				elseif timeslot == "afternoon"
+					{
+						"\0\s[0]This is an afternoon close dialogue.\w8\1\s[10]Done.\w8"
+						
+						"\1\s[10]This is another afternoon close dialogue.\w8\0\s[0]Yup.\w8"
+					}
+				elseif timeslot == "evening"
+					{
+							if weekday == 6 
+							{
+								"\0\s[0]This is a Saturday evening close dialogue.\w8\1\s[10]Somewhat specific.\w8"
+							}
+							else 
+							{
+								"\0\s[0]This is an evening close dialogue.\w8\1\s[10]Bye.\w8"
+								
+								"\1\s[10]This is another evening close dialogue.\w8\0\s[0]Yup.\w8"
+							}
+					}
+				elseif timeslot == "latenight"
+					{
+							if weekday == 6 
+							{
+								"\0\s[0]This is a late Saturday night close dialogue.\w8"
+								
+								"\1\s[10]This is another late Saturday night close dialogue.\w8\0\s[0]Yup.\w8"
+							}
+							
+							"\1\s[10]This is a late night close dialogue.\w8\0\s[0]That it is.\w8"
+							
+							"\0\s[0]This is another late night close dialogue.\w8\1\s[10]Done.\w8"
+					}
+				elseif weekday == 0
+							{
+								"\1\s[10]This is a middle of the night Sunday close dialogue.\w8\0\s[0]From midnight to five AM on Sunday.\w8"
+							}
+							"\0\s[0]This is a middle of the night close dialogue.\w8\1\s[10]Very late at night.\w8"
+							
+							"\1\s[10]This is another middle of the night close dialogue.\w8"
+							
+							"\1\s[10]This is the third middle of the night close dialogue.\w8\0\s[0]So it is.\w8"
+					}
+			}
+		else 
+		{
+			"\0\s[0]This dialogue is for closing us before five minutes have passed.\w8\w8"
+		
+			"\1\s[10]This is another bit of dialogue for closing us before five minutes have passed.\w8\0\s[0]Quickly done.\w8\w8"
+		}
+ }
+
+ //-------------------------State Changing--------------------
+ 
+ //--OnWindowStateMinimize
+
+ OnWindowStateMinimize
+ {
+	"\0\s[0]This dialogue means we're being minimized.\w8\1\s[10]Gonna get tiny for a bit.\e"
+}
+
+
+//--OnWindowStateRestore
+
+OnWindowStateRestore
+ {
+	"\0\s[0]This dialogue means we were minimized.\w8\1\s[10]Then brought back up.\e"
+}
+
+
+//--OnGhostChanging
+ 
+OnGhostChanging
+ {
+	if reference0 == "Girl" 
+	{
+		"\0\s[0]This dialogue is for us reloading ourselves.\w8\w8\e"
+	}
+ 	else 
+	{
+		"\0\s[0]This dialogue means we are switching to %(reference0).\w8\1\s[10]Bye.\w8\w8\e"
+	}
+}
+
+
+//--OnGhostChanged
+
+OnGhostChanged
+{
+	"\0\s[0]\1\s[10]" 
+	
+	if reference0 == "Girl" 
+	{
+		"\0\s[0]We have reloaded ourselves.\1\w8\s[10]Sure have.\e"
+	}
+	else
+	{
+		"\1\s[10]Goodbye, %(reference0).\w8\0\s[0]Someone switched from you to us.\e"
+	}
+}
+
+
+//--OnShellChanging
+
+OnShellChanging
+ {
+	if reference0 == "Hypothetical Shell that doesn't actually exist" 
+	{
+		"\1\s[10]This dialogue is specifically for changing to this particular shell.\w8\0\w8\s[9]It totally exists.\w8\e"
+	}
+	else 
+	{
+		"\0\s[0]This dialogue is for changing shells.\w8\1\s[10]Sure is.\w8\e"
+	
+		"\1\s[10]This is another bit of dialogue for changing shells.\w8\0\s[8]I wonder how many people will actually have multiple shells?\e"
+	}
+ }
+ 
+ 
+ //--OnShellChanged
+ 
+OnShellChanged
+ {
+ 	if reference0 == "GT Default Shell" 
+ 	{
+ 		nowshell = "master" 
+		
+ 		"\0\s[0]This dialogue is for switching to our default shell.\w8\1\s[18]No really, will anyone actually put in the work to use these functions?\w8\0\s[9]\n\n[half]Shh.\e"
+ 	}
+ 	elseif reference0 == "Hypothetical Shell that doesn't actually exist"
+ 	{
+ 		nowshell = "totallyrealshell"
+		
+ 		"\0\s[0]This dialogue is for switching to that hypothetical shell.\e"
+		
+ 		"\0\s[0]This is another bit of dialogue for switching to this hypothetical shell.\w8\1\s[18]Man if you actually use this, you should tell Zar, it'll blow her mind.\w8\0\n\n[half]\s[9]Shut up, we're not supposed to be in-character here.\e"
+ 	}
+ 	elseif reference0 == "Another totally real shell wow"
+ 	{
+ 		nowshell = "thiswouldbesomuchwork"
+		
+ 		"\1\s[10]This dialogue is after we've switched to another totally real shell.\e"
+ 	}
+ 	else 
+ 	{
+		"\0\s[0]This dialogue is after we've changed our shell to %(reference[0]).\w8\1\s[18]How many shells you got?\e"
+	
+	}
+ }
+
+
+ //--OnDressupChanged
+
+OnDressupChanged
+{
+if reference0 == 0
+	{
+	if reference1 == "Clothing for Girl" 
+		{
+			if reference2 == 1 
+			{
+			"\0\s[0]You put my clothing item on me.\w8\1\s[19]lol like zar would ever bother with clothes for a ghost.\w8\0\s[9]\n\n[half]Shut up dude you're going to get us in trouble.\e"
+			}
+			else 
+			{
+			"\0\s[0]You took the clothing item off.\e"
+			}
+		}		
+	}
+else
+	{
+	if reference1 == "some kind of clothing for triangle??"
+		{
+			if reference2 == 1 
+			{
+			"\1\s[10]I'm wearing some kind of clothing.\w8\0\s[8]Maybe a hat?\e"
+			}
+			else 
+			{
+			"\1\s[10]You took off some kind of clothing.\e"
+			}
+		}
+	elseif reference1 == "i'm gonna say a propeller beanie" 
+		{
+			if reference2 == 1 
+			{
+			"\1\s[10]You put a hat on me.\w8\0\s[6]lol.\w8\1\n\n[half]\s[11]Shaddap.\e"
+			}
+			else 
+			{
+			"\1\s[10]You took off the hat.\e"
+			}
+		}
+	}
+}
