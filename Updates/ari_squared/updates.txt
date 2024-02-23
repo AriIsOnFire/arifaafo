@@ -7,7 +7,7 @@ file,ghost/master/ari_etc.dic2d5036237f6c4eff54019802a5c91d8fsize=15584date=2
 file,ghost/master/ari_menu.dic98050350789b29c3ae959e0091aebbfdsize=20077date=2024-02-01T19:13:08
 file,ghost/master/ari_mouse.dic97ed6868dce54a5ec63acb51a859603fsize=4853date=2024-02-22T19:52:09
 file,ghost/master/ari_nameteach.dica9a3a9f8782dc19523af96e07cc82c33size=6609date=2023-09-28T19:07:36
-file,ghost/master/ari_string.dic59e10d30d5f438bab57c14fafd5e2473size=9692date=2024-02-22T20:19:35
+file,ghost/master/ari_string.dic89ad1ee2a1cc58ca7beef7b1f4113ecdsize=9694date=2024-02-22T20:24:37
 file,ghost/master/ari_word.dic625062b272dffb65efef1a3b3bdd9571size=3066date=2023-09-28T19:13:03
 file,ghost/master/ari_yaya_base/_loading_order.txt9c350c2c9c08f635bff5eaae149af8c8size=103date=2023-06-01T04:32:24
 file,ghost/master/ari_yaya_base/compatible.dic4f8b1e8c8c08dc44e70b1bd4f52a1affsize=4297date=2023-06-01T04:32:24
