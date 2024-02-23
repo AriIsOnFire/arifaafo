@@ -163,24 +163,21 @@ OnBoot
 	--
 	
 	if dayslot == userbirthday
-	
-	{
-				"\0\s[5]HEEEEEEYYYYY!!!! \w8\s[0]Happy birthday, \w4%(username)! \w8\s[6]I hope it's a good one!\e" 
-	}
-	
+		{
+			"\0\s[5]HEEEEEEYYYYY!!!! \w8\s[0]Happy birthday, \w4%(names)! \w8\s[6]I hope it's a good one!\e" 
+		}
 	elseif dayslot == "6month 10day" 
-	
-	{
-				"\0\s[0]Today is June 10! \w8\s[5]That means it's my birthday! \w8\s[1]No need to wish me a happy birthday, \w4\s[3]but I won't stop you if you do. \w8\s[6]Honestly,\w4 I'm just happy to spend time with you!\e"
-	}
-	elseif dayslot == "7month 4day"
-	{
-				"\1\s[10]It's the fourth of July.\e"
-	}
+		{
+			"\0\s[0]Today is June 10! \w8\s[5]That means it's my birthday! \w8\s[1]No need to wish me a happy birthday, \w4\s[3]but I won't stop you if you do. \w8\s[6]Honestly,\w4 I'm just happy to spend time with you!\e"
+		}
+	elseif dayslot == "1month 1day"
+		{
+			"\0\s[5]Ayyyy, Happy new year!! Hopefully it's a good one, yeah?\e"
+		}
 	else
-	{
-		"%(normalboottalk)"
-	}
+		{
+			"%(normalboottalk)"
+		}
 
 }
 
@@ -195,7 +192,7 @@ normalboottalk
 	
 	if weekday == 6 && hour >= 19 
 		{
-		"\0\s[0]It's Saturday night.\e"
+			"\0\s[0]It's Saturday night.\e"
 		}
 	elseif RAND(100) < 40 /
 		{
@@ -244,7 +241,7 @@ normalboottalk
 		
 			"\1\s[10]This is the third late night boot dialogue.\w8\0\s[0]Between 21 and 24.\e"
 		}
-		else //the last timeslot we haven't done is midnight, which is what's under here.
+		else 
 		{
 			"\0\s[0]This is a middle of the night boot dialogue.\1\w8\s[10]From midnight to five.\e"
 			
@@ -345,7 +342,7 @@ OnClose
 
  OnWindowStateMinimize
  {
-	"\0\s[0]This dialogue means we're being minimized.\w8\1\s[10]Gonna get tiny for a bit.\e"
+	"\0\s[0]Oh- Man. Got Compressed.\e"
 }
 
 
@@ -353,7 +350,7 @@ OnClose
 
 OnWindowStateRestore
  {
-	"\0\s[0]This dialogue means we were minimized.\w8\1\s[10]Then brought back up.\e"
+	"\0\s[0]Ahhh, I'm back! I'm pretty sure I have a crick in my neck from that. I'm small, but DAMN it was cramped.\e"
 }
 
 
@@ -361,13 +358,17 @@ OnWindowStateRestore
  
 OnGhostChanging
  {
-	if reference0 == "Girl" 
+	if reference0 == "Ari" 
 	{
-		"\0\s[0]This dialogue is for us reloading ourselves.\w8\w8\e"
+		"\0\s[0]Oh, You want me to reload? Got it! Gimme a sec...\w8\w8\e"
+	}
+	elseif reference0 == "Hydrate"
+	{
+		"\0\s[0]Oooo, getting hydrated? Neat! I should probably be better about that myself, but eh. Water tastes bad. Hopefully you do better than me!\w8\w8\e"
 	}
  	else 
 	{
-		"\0\s[0]This dialogue means we are switching to %(reference0).\w8\1\s[10]Bye.\w8\w8\e"
+		"\0\s[0]Oh, swapping to %(reference0)? Cool! Tell them I say hi!\w8\w8\e"
 	}
 }
 
@@ -378,13 +379,13 @@ OnGhostChanged
 {
 	"\0\s[0]\1\s[10]" 
 	
-	if reference0 == "Girl" 
+	if reference0 == "Ari" 
 	{
-		"\0\s[0]We have reloaded ourselves.\1\w8\s[10]Sure have.\e"
+		"\0\s[0]...Aaaand there we go! All reloaded! Hopefully that fixed what was happening?\e"
 	}
 	else
 	{
-		"\1\s[10]Goodbye, %(reference0).\w8\0\s[0]Someone switched from you to us.\e"
+		"\0\s[5]Oh, hello %(names)!! I missed ya! Was %(reference0) nice to you? I hope so!\e"
 	}
 }
 

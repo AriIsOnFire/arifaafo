@@ -18,6 +18,10 @@ OnTeachName
 		}
 }
 
+names
+{
+	ANY(username)
+}
 
 //--OnNameTeach
 //This is where the user inputs their name and the ghost analyzes it.

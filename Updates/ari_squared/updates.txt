@@ -1,13 +1,13 @@
 charset,OSNative
 file,ghost/master/ari_aitalk.dic096a2deb710926aea8e033a0a63b8e42size=17105date=2023-09-28T18:33:17
 file,ghost/master/ari_anchor.dic9495ca3bc29065ed2d8e412838c650efsize=2237date=2023-09-28T18:23:43
-file,ghost/master/ari_bootend.dicb338621eead66297377cfc5633c5b038size=12299date=2024-02-01T20:42:59
+file,ghost/master/ari_bootend.dicbac84a04d7e06ba19c8e126a8ddb3f53size=12454date=2024-02-22T22:31:32
 file,ghost/master/ari_commu.dic25d50da676e84ffbdc92fbc31bb6ee51size=3816date=2023-09-28T18:38:11
 file,ghost/master/ari_etc.dic2d5036237f6c4eff54019802a5c91d8fsize=15584date=2024-02-01T21:24:26
-file,ghost/master/ari_menu.dic98050350789b29c3ae959e0091aebbfdsize=20077date=2024-02-01T19:13:08
+file,ghost/master/ari_menu.dic06eaf53361d79c40d8df467be37261d4size=23534date=2024-02-22T21:34:50
 file,ghost/master/ari_mouse.dic97ed6868dce54a5ec63acb51a859603fsize=4853date=2024-02-22T19:52:09
-file,ghost/master/ari_nameteach.dica9a3a9f8782dc19523af96e07cc82c33size=6609date=2023-09-28T19:07:36
-file,ghost/master/ari_string.dic89ad1ee2a1cc58ca7beef7b1f4113ecdsize=9694date=2024-02-22T20:24:37
+file,ghost/master/ari_nameteach.dicda1a13b17d8a4bc9cc1278e1667b26a4size=6638date=2024-02-22T22:28:12
+file,ghost/master/ari_string.dic3289ed46adfd72fb2a3a9d163959051dsize=6010date=2024-02-22T20:42:33
 file,ghost/master/ari_word.dic625062b272dffb65efef1a3b3bdd9571size=3066date=2023-09-28T19:13:03
 file,ghost/master/ari_yaya_base/_loading_order.txt9c350c2c9c08f635bff5eaae149af8c8size=103date=2023-06-01T04:32:24
 file,ghost/master/ari_yaya_base/compatible.dic4f8b1e8c8c08dc44e70b1bd4f52a1affsize=4297date=2023-06-01T04:32:24

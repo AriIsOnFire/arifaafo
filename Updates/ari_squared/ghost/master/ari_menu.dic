@@ -125,9 +125,9 @@ TalkConfig : all
 {
 	"\0\b[2]\_q\" 
 	
-	
-	"f[bold,1]Your name:\f[bold,0] %(username) \f[sup,1](\q[Change it?,TEACHNAME])\f[sup,0]\n"
-	
+	{
+		"\![*]\q[Change Name,OnChangeNameMenu]\n"
+	}
 	
 	//If you want your user to set their pronouns, you can uncomment this menu option by removing the two slashes in front. Read more on the walkthrough about commenting.
 	
@@ -145,7 +145,7 @@ TalkConfig : all
 	
 	
 		{
-		"\![*]Enable Uninstall? (NOW : %(deleteshitai))\n\q[ON,deleteon] \q[OFF,deleteoff]\n\n[half]\n"
+			"\![*]Enable Uninstall? (NOW : %(deleteshitai))\n\q[ON,deleteon] \q[OFF,deleteoff]\n\n[half]\n"
 		}
 		
 	
@@ -153,7 +153,122 @@ TalkConfig : all
 	"\![*]\q[Back to the menu,BACKTOMENU]\e"
 }
 
+//MULTINAME TEACH TEST!! Code by Okuajub!!
+OnChangeNameMenu : all
+{
+	_nameTotal = ARRAYSIZE(username) 
+	_names = ""
+    if _nameTotal > 1; _names = "Names" 
+	else; _names = "Name"
 
+    "\t\*\![enter,nouserbreakmode]"
+    "So, you want to change your name?\n\n[half]"
+    "\f[italic,true]Current %(_names): \n"
+
+	foreach username; _printName
+	{
+		"%(_printName)\n"
+	}
+
+	"\f[italic,default]\n[half]"
+    "\![*]\q[Replace Current %(_names),OnChangeName,replace,1]\n"
+    "\![*]\q[Add New Name,OnChangeName,add,1]\n"
+    if _nameTotal > 1; "\![*]\q[Delete A Name,OnChangeName,delete,1]\n"
+    "\n[half]\![*]\q[Quit Menu,dummy]"
+}
+
+OnChangeName : all
+{
+	_changeType = reference0
+	//Keeps track of how far along we are.
+	_step = reference1
+	_newName = reference2
+
+	if _step == 1
+	{
+		if _changeType == "add" || _changeType == "replace"
+		{
+			"\t\*\![enter,nouserbreakmode]\![open,inputbox,OnChangeNameInput,--timeout=-1,--reference=%(_changeType),--reference=2]"
+			"Got it!! What do you wanna go by?"
+			"\n\n[half]\![*]\q[Quit Menu,OnQuit,0]"
+		}
+		else
+		{
+			"Oh, you want to delete a name? Which one?\n\n[half]"
+			foreach username; _printName
+			{
+				"\![*]\q[%(_printName),OnChangeName,delete,2,%(_printName)]\n"
+			}
+			"\n[half]\![*]\q[Quit Menu,OnQuit,0]"
+		}
+	}
+	elseif _step == 2
+	{
+		if _changeType == "add" 
+		{
+			username ,= _newName
+			"Got it! I'll call you %(_newName), too."
+		}
+		elseif _changeType == "replace"
+		{
+			username = _newName
+			"Got it! I'll call you %(_newName) from now on."
+		} 
+		else
+		{
+			foreach username; _name
+			{
+				if _name == _newName
+				{
+					username[ASEARCH(_newName,username)] = IARRAY
+				}
+			}
+			"Got it! I won't call you that one anymore."
+		}
+	}
+}
+
+OnChangeNameInput : all
+{
+	_newName = reference0
+	_changeType = reference2
+	_step = reference3
+
+	//Add words to the blacklist to block them from being used.
+	_blacklist = ("slurs","cusswords","whateveryouwanttoblock")
+
+	// Cleans up name to prep it for the blacklist
+	_nameCheck = _newName
+	_namecheck = TOLOWER(_nameCheck) //Makes it lowercase.
+	_namecheck = REPLACE(_nameCheck," ", "") // Removes spaces
+	_namecheck = REPLACE(_nameCheck,"_", "") // Removes underscores
+	_namecheck = REPLACE(_nameCheck,"-", "") // Removes dashes
+	_namecheck = REPLACE(_nameCheck,".", "") // Removes periods
+	_namecheck = REPLACE(_nameCheck,",", "") // Removes commas
+	_namecheck = REPLACE(_nameCheck,"'", "") // Removes apostrophes
+	_namecheck = REPLACE(_nameCheck,'"', "") // Removes quotes
+
+	if ASEARCH(_nameCheck,_blacklist) != -1 //Fails blacklist check
+	{
+		"Ah, Sorry. Can't allow that one. How about a different name?"
+		"\t\*\![enter,nouserbreakmode]\![open,inputbox,OnChangeNameInput,--timeout=-1,--reference=%(_changeType),--reference=2]"
+		"\n\n[half]\![*]\q[Quit Menu,OnQuit,0]"
+	}
+	elseif _nameCheck == "turgle" // You can also add custom responses to certain words, too.
+	{
+		"Who turgled?"
+		"\t\*\![enter,nouserbreakmode]\![open,inputbox,OnChangeNameInput,--timeout=-1,--reference=%(_changeType),--reference=2]"
+		"\n\n[half]\![*]\q[Quit Menu,OnQuit,0]"
+	}
+	elseif ASEARCH(_newName,username) != -1 && _changeType == "add" // If the name is already present (alternate capitalizations/spellings allowed)
+	{
+		"Oh, you already have that name in my notes. Guess theres nothing to change, then?"
+	}
+	else //Passes
+	{
+		"\![raise,OnChangeName,%(_changeType),%(_step),%(_newName)]"
+	}
+}
 
 
 // ______                                                 _____ _             _   
