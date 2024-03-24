@@ -42,9 +42,9 @@ OnFirstBoot : all
  	{
 		
 		
-		"\1\s[10]\0\s[7].\w8.\w8.\w8 Huh? \w8\w8\w8\s[2]Oh! \w8\w6\n\n[half]\s[3]Sorry,\w4 I wasn't ready to be called yet. \w6\s[0]That's okay, \w4\s[5]Let's just get set up really quick, \w4yeah?\e"
+		"\1\s[10]\0\s[7].\w8.\w8.\w8 Huh? \w8\w8\w8\s[2]Oh! \w8\w6\n\n[half]\s[3]Sorry,\w4 I wasn't ready to be called yet. \w6\s[0]That's okay, \w4\s[5]Let's just get set up really quick, \w4yeah?"
 	
-		"Now we're going to ask the user the first question about themselves, namely what pronouns they want us to use.\w8\0\s[0]\n\n[half]This will let us construct grammatically correct sentences referring to the user later.\x\w8\1\c\s[10]How should we refer to you, user?\n\n[half]"
+		"Right! To start, how about... Pronouns! Yes, yes, pronouns sound good. Lets see... Ah, here's the choice buttons!\n\n[half]"
 		"\w5\_q\![*]\q[He/Him/His,choicefirsthehim]\n"
 		"\![*]\q[She/Her/Hers,choicefirstsheher]\n"
 		"\![*]\q[They/Them/Their,choicefirsttheythem]\e"
@@ -186,38 +186,38 @@ OnBoot
 
 normalboottalk
 {
-	"\0\s[0]Here is some boot dialogue.\e"
+	"\0\s[0]Hey there! Good to see ya!\e"
 	
-	"\1\s[0]Here is some more boot dialogue.\e"
+	"\0\s[0]Hello!!! I missed you!!\e"
 	
 	if weekday == 6 && hour >= 19 
 		{
-			"\0\s[0]It's Saturday night.\e"
+			"\0\s[0]Alone on a Saturday night? God you're pathetic. \n\n[half]... Okay, I don't actually mean that, but I couldn't resist making the reference!\e"
 		}
 	elseif RAND(100) < 40 /
 		{
-			"\0\s[0]This is one of the random boot conversations.\w8\1\s[10]The random number drawn was less than forty.\e"
+			"\0\s[0]Oh, hello!! I missed you, how have you been? Good, I hope?\e"
 	
-			"\1\s[10]This is another one of the random boot conversations.\w8\0\s[0]The random number was again less than forty.\e"
+			"\0\s[0]Oh, sup? Didn't expect for you to pull me up now. No, you're not bothering me! I'm always happy to see you!\e"
 	
-			"\0\s[0]This is the third random boot conversation.\w8\1\s[10]The random number was less than forty.\e"
+			"\0\s[0]Haiiii helloooo I'm so happy to see you!!! awubawubawubawubawubawaaaa!!\e"
 		}
  	else
  	{
 		
 		if timeslot == "earlymorning" 
 		{
-			"\0\s[0]This is an early morning boot dialogue.\w8\1\s[10]Between the hours of five and eight.\e"
+			"\0\s[0]Guhh... Morning. You're up early, huh?\e"
 		
-			"\1\s[10]This is another early morning boot dialogue.\w8\0\s[0]Again, between the hours of five and eight.\e"
+			"\0\s[0]Wah, I am NOT a morning person. Either way, buenos dias!\e"
 		
-			"\1\s[10]This is the third early morning boot dialogue.\w8\0\s[0]Between the hours of five and eight.\e"
+			"\0\s[0]Wait, it's already morning?! I didn't sleep! Oops... Really gotta practice what I preach...\e"
 		}
 		elseif timeslot == "morning"
 		{
-			"\0\s[0]This is a morning boot dialogue.\e"
+			"\0\s[0]Good morning! Don't forget to get some breakfast!\e"
 		
-			"\1\s[10]This is another morning boot dialogue.\w8\0\s[0]Yup.\e"
+			"\0\s[0]Mooorrrning! Still not a morning person, but this is far more tolerable, haha!\e"
 		}
 		elseif timeslot == "lunch"
 		{
