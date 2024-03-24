@@ -206,9 +206,9 @@ normalboottalk
 		
 		if timeslot == "earlymorning" 
 		{
-			"\0\s[0]Guhh... Morning. You're up early, huh?\e"
+			"\0\s[0]Guhh... Morning. You're up early, huh? You better eat!\e"
 		
-			"\0\s[0]Wah, I am NOT a morning person. Either way, buenos dias!\e"
+			"\0\s[0]Wah, I am NOT a morning person. Either way, buenos dias! Get breakfast!\e"
 		
 			"\0\s[0]Wait, it's already morning?! I didn't sleep! Oops... Really gotta practice what I preach...\e"
 		}
@@ -220,33 +220,37 @@ normalboottalk
 		}
 		elseif timeslot == "lunch"
 		{
-			"\0\s[0]This is a lunch boot dialogue.\1\s[10]Sure is.\e"
+			"\0\s[0]Ooo, lunchtime? You better get some food, please!\e"
 		
-			"\1\s[10]This is another lunch boot dialogue.\e"
+			"\0\s[0]LUNCH!! GO GET IT!!! GO GET FOOD!!!\e"
 		}
 		elseif timeslot == "afternoon"
 		{
-			"\1\s[10]This is an afternoon boot dialogue.\w8\0\s[0]That it is.\e"
+			"\0\s[0]Good afternoon! Have you had a good day so far? I hope so!\e"
+			
+			"\0\s[0]Good afternoon!! I missed ya! What's happened today?\e"
 		}
 		elseif timeslot == "evening"
 		{
-			"\0\s[0]This is an evening boot dialogue.\1\s[10]Between the hours of 18 and 20.\e"
+			"\0\s[0]Hey, you should get dinner soon!\e"
+			
+			"\0\s[0]Goood evening! You should get dinner if you haven't already!\e"
 		}
 		elseif timeslot == "latenight"
 		{
-			"\0\s[0]This is a late night boot dialogue.\1\w8\s[10]Between 21 and 24.\e"
+			"\0\s[0]Oh, hello! You should think about going to bed soon!\e"
 		
-			"\0\s[0]This is another late night boot dialogue.\1\w8\s[10]That it is.\e"
+			"\0\s[0]I appreciate you checking in, but isn't it getting late? You should head to sleep!\e"
 		
-			"\1\s[10]This is the third late night boot dialogue.\w8\0\s[0]Between 21 and 24.\e"
+			"\0\s[0]Ah, want some company tonight? I can do that! Just be sure to sleep soon!\e"
 		}
 		else 
 		{
-			"\0\s[0]This is a middle of the night boot dialogue.\1\w8\s[10]From midnight to five.\e"
+			"\0\s[0]Guh.... %(names)? What are you doing up?? You should be asleep...\e"
 			
-			"\0\s[0]This is another middle of the night boot dialogue.\1\w8\s[10]That it is.\e"
+			"\0\s[0]*YAWN*, is it morning already? No, it shouldn't be, it's way too dark...\e"
 		
-			"\1\s[10]This is the third middle of the night boot dialogue.\w8\0\s[0]Very late at night.\e"
+			"\0\s[0]Oh! Hey there! You caught me during an all nighter, haha! What's up? Shoudn't you be sleeping?\e"
 		}
 	}
 	
