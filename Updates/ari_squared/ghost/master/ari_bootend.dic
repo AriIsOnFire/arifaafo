@@ -146,7 +146,6 @@ dayslot
 	"%(month)month %(day)day"
 }
 
-
 //-----------------------Normal Booting----------------------------
 
 //--OnBoot
