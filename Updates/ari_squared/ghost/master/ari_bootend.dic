@@ -262,7 +262,7 @@ OnClose
 	 
 	 "\0\s[0]Oh- Okay! Seeya!\w8\w8\-"
 	 
-	 "\1\s[0]This is another random close dialogue.\w8\w8\-"
+	 "\1\s[0]GONE.\w8\w8\-"
 	
 		if passmin >= 5 || passhour > 0	
 		{
