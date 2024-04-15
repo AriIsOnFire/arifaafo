@@ -250,7 +250,7 @@ normalboottalk
 			
 			"\0\s[0]*YAWN*, is it morning already? No, it shouldn't be, it's way too dark...\e"
 		
-			"\0\s[0]Oh! Hey there! You caught me during an all nighter, haha! What's up? Shoudn't you be sleeping?\e"
+			"\0\s[0]Oh! Hey there! You caught me during an all nighter, haha! What's up? Shouldn't you be sleeping?\e"
 		}
 	}
 	
@@ -260,7 +260,7 @@ normalboottalk
 OnClose
  {
 	 
-	 "\0\s[0]This is some random close dialogue.\w8\w8\-"
+	 "\0\s[0]Oh- Okay! Seeya!\w8\w8\-"
 	 
 	 "\1\s[0]This is another random close dialogue.\w8\w8\-"
 	
@@ -333,9 +333,9 @@ OnClose
 			}
 		else 
 		{
-			"\0\s[0]This dialogue is for closing us before five minutes have passed.\w8\w8"
+			"\0\s[0]Oh, Uh... So soon? Okay, well... Have a good day!\w8\w8"
 		
-			"\1\s[10]This is another bit of dialogue for closing us before five minutes have passed.\w8\0\s[0]Quickly done.\w8\w8"
+			"\0\s[0]Ptff, talk to Ari speedrun, any%. Seeya!\w8\w8"
 		}
  }
 
