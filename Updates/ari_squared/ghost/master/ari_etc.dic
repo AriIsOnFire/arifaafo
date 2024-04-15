@@ -617,7 +617,7 @@ OnBatteryCritical
  
 //--OnBatteryNotify--------------------------------------------------------------------
 
-
+/*
 OnBatteryNotify
 {
 	if reference2 == "online" //If your laptop is plugged in
@@ -629,7 +629,7 @@ OnBatteryNotify
 		"\0\s[0]Ah, you unplugged your laptop. Watch that battery!\e"
 	}
 }
-
+*/
 
 
  //--OnShellScaling
