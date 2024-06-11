@@ -1,7 +1,7 @@
 charset,OSNative
 file,ghost/master/ari_aitalk.dic096a2deb710926aea8e033a0a63b8e42size=17105date=2023-09-28T19:33:17
 file,ghost/master/ari_anchor.dic9495ca3bc29065ed2d8e412838c650efsize=2237date=2023-09-28T19:23:43
-file,ghost/master/ari_bootend.dic12f63d502cfe2662df7a7fc5279301ddsize=11510date=2024-06-11T12:47:28
+file,ghost/master/ari_bootend.dicbaa994d68ebc899fc3f5038753649fecsize=11519date=2024-06-11T12:50:54
 file,ghost/master/ari_commu.dic25d50da676e84ffbdc92fbc31bb6ee51size=3816date=2023-09-28T19:38:11
 file,ghost/master/ari_etc.dicca14b149bdb28ce80d48d9119948dbc9size=15551date=2024-06-11T12:08:55
 file,ghost/master/ari_menu.dic06eaf53361d79c40d8df467be37261d4size=23534date=2024-02-22T22:34:50
