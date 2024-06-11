@@ -262,73 +262,61 @@ OnClose
 	 
 	 "\0\s[0]Oh- Okay! Seeya!\w8\w8\-"
 	 
-	 "\1\s[0]GONE.\w8\w8\-"
+	 "\0\s[0]GONE.\w8\w8\-"
 	
 		if passmin >= 5 || passhour > 0	
 		{
 			if RAND(100) < 40 
 			{
-				"\0\s[0]This is a random close dialogue.\w8\1\s[10]The random number generator chose something below 40.\w8\w8"
+				"\0\s[0]Oh! You gotta go? That's okay! See you soon!\w8\w8"
 			}
 			else
 			{
 				if timeslot == "earlymorning"
 					{
-						"\1\s[10]This is an early morning close dialogue.\w8\0\s[0]From 5 to 8.\w8"
+						"\0\s[0]Ah, going to get ready for the morning? I hope you have a good day!\w8\w8"
 						
-						"\0\s[0]This is another early morning close dialogue.\w8\1\s[10]Yup.\w8\w8"
+						"\0\s[0]The real me may still be asleep, but I can at least tell you he'd wish you have a good day!\w8\w8"
 					}
 				elseif timeslot == "morning"
 					{
-						"\0\s[0]This is a morning close dialogue.\w8\w8"
+						"\0\s[0]Ah, heading out? Have a good day!!\w8\w8"
 					}
 				elseif timeslot == "lunch"
 					{
-						"\0\s[0]This is a lunch close dialogue.\w8\1\s[10]Yup.\w8"
+						"\0\s[0]Go get food!!! Please take care of yourself!!\w8\w8"
 						
-						"\0\s[0]This is another lunch close dialogue.\w8\1\s[10]In the middle of the day.\w8"
+						"\0\s[0]Food time! You better get a full meal if you haven't already!\w8\w8"
 					}
 				elseif timeslot == "afternoon"
 					{
-						"\0\s[0]This is an afternoon close dialogue.\w8\1\s[10]Done.\w8"
+						"\0\s[0]Hope you've had a good day so far!\w8\w8"
 						
-						"\1\s[10]This is another afternoon close dialogue.\w8\0\s[0]Yup.\w8"
+						"\0\s[0]Goooo take a break and get some water! Bye!\w8\w8"
 					}
 				elseif timeslot == "evening"
 					{
-							if weekday == 6 
-							{
-								"\0\s[0]This is a Saturday evening close dialogue.\w8\1\s[10]Somewhat specific.\w8"
-							}
-							else 
-							{
-								"\0\s[0]This is an evening close dialogue.\w8\1\s[10]Bye.\w8"
-								
-								"\1\s[10]This is another evening close dialogue.\w8\0\s[0]Yup.\w8"
-							}
+						
+						"\0\s[0]Hope you got some dinner! Seeya soon!\w8\w8"
+						
+						"\0\s[0]Goodnight! Hope you got some food!\w8\w8"
+						
 					}
 				elseif timeslot == "latenight"
 					{
-							if weekday == 6 
-							{
-								"\0\s[0]This is a late Saturday night close dialogue.\w8"
-								
-								"\1\s[10]This is another late Saturday night close dialogue.\w8\0\s[0]Yup.\w8"
-							}
-							
-							"\1\s[10]This is a late night close dialogue.\w8\0\s[0]That it is.\w8"
-							
-							"\0\s[0]This is another late night close dialogue.\w8\1\s[10]Done.\w8"
+	
+						"\0\s[0]Good night! Hope you have good dreams.\w8\w8"
+						
+						"\0\s[0]Sleep well!\w8\w8"
+						
 					}
-				elseif weekday == 0
-							{
-								"\1\s[10]This is a middle of the night Sunday close dialogue.\w8\0\s[0]From midnight to five AM on Sunday.\w8"
-							}
-							"\0\s[0]This is a middle of the night close dialogue.\w8\1\s[10]Very late at night.\w8"
-							
-							"\1\s[10]This is another middle of the night close dialogue.\w8"
-							
-							"\1\s[10]This is the third middle of the night close dialogue.\w8\0\s[0]So it is.\w8"
+				else
+					{
+	
+						"\0\s[0]Going to bed? I hope you are!\w8\w8"
+						
+						"\0\s[0]You better get some sleep!\w8\w8"
+						
 					}
 			}
 		else 
