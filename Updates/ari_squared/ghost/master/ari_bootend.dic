@@ -334,8 +334,7 @@ OnClose
  OnWindowStateMinimize
  {
 	"\0\s[0]Oh- Man. Got Compressed.\e"
-}
-
+ }
 
 //--OnWindowStateRestore
 
