@@ -325,6 +325,7 @@ OnClose
 		
 			"\0\s[0]Ptff, talk to Ari speedrun, any%. Seeya!\w8\w8"
 		}
+		}
  }
 
  //-------------------------State Changing--------------------
