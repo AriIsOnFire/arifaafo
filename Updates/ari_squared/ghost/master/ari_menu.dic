@@ -44,15 +44,10 @@ MenuRun : all
 	if lastTalk != "" //What this does is check to see if the ghost has already said a random bit of dialogue on its own, essentially by seeing if the lastTalk thing is NOT empty (!= means "does not equal").
 	{
 	  "\![*]\q[What'd you say?,OnLastTalk]\n\n[half]"
-	  "\![*]\q[What was that?,OnLastTalk]\n\n[half]"
-	  "\![*]\q[Repeat that!,OnLastTalk]\n\n[half]"
 	}
 	--
-	{
-		"\![*]\q[Speak!,OnAiTalk]\n\n[half]"
-		"\![*]\q[Say something nerd,OnAiTalk]\n\n[half]"
-		"\![*]\q[What's up?,OnAiTalk]\n\n[half]"
-	}
+	"\![*]\q[Speak!,OnAiTalk]\n\n[half]"
+
 	//"\![*]\q[Say something 2,OnAiTalk]\n"
 	
 	//Advanced users, you can add multiple captions for any option you add to a menu you make just like this, as long as you separate it from the other options into its own section with two dashes above and below. Note that you can't do this if the Function above has ": all" after it, since that will put every potential option in. You'll have to set it your menu up differently to take --s into account. I commented it out here because of ": all" above, but you can see the basic idea.
@@ -131,7 +126,7 @@ TalkConfig : all
 	"\0\b[2]\_q\" 
 	
 	{
-		"\!\[*]\q[Change Name,OnChangeNameMenu]\n"
+		"\![*]\q[Change Name,OnChangeNameMenu]\n"
 	}
 	
 	//If you want your user to set their pronouns, you can uncomment this menu option by removing the two slashes in front. Read more on the walkthrough about commenting.
