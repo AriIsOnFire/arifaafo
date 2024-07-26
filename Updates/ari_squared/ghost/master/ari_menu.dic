@@ -131,7 +131,7 @@ TalkConfig : all
 	"\0\b[2]\_q\" 
 	
 	{
-		"\![*]\q[Change Name,OnChangeNameMenu]\n"
+		"\!\[*]\q[Change Name,OnChangeNameMenu]\n"
 	}
 	
 	//If you want your user to set their pronouns, you can uncomment this menu option by removing the two slashes in front. Read more on the walkthrough about commenting.
