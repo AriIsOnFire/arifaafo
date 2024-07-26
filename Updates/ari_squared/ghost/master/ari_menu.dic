@@ -44,17 +44,13 @@ MenuRun : all
 	if lastTalk != "" //What this does is check to see if the ghost has already said a random bit of dialogue on its own, essentially by seeing if the lastTalk thing is NOT empty (!= means "does not equal").
 	{
 	  "\![*]\q[What'd you say?,OnLastTalk]\n\n[half]"
-	  --
 	  "\![*]\q[What was that?,OnLastTalk]\n\n[half]"
-	  --
 	  "\![*]\q[Repeat that!,OnLastTalk]\n\n[half]"
 	}
 	--
 	{
 		"\![*]\q[Speak!,OnAiTalk]\n\n[half]"
-		--
 		"\![*]\q[Say something nerd,OnAiTalk]\n\n[half]"
-		--
 		"\![*]\q[What's up?,OnAiTalk]\n\n[half]"
 	}
 	//"\![*]\q[Say something 2,OnAiTalk]\n"
