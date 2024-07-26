@@ -23,9 +23,9 @@ Test variable
 
 OpenSakuraMenu
 {
-		"\0\s[0]\b2This is the first random menu open dialogue."
-		"\0\s[0]\b2This is the second random menu open dialogue."
-		"\0\s[0]\b2This is the third random menu open dialogue."
+		"\0\s[0]\b2Yeah?"
+		"\0\s[0]\b2What's up?"
+		"\0\s[0]\b2Merp?"
 		--
 		MenuRun
 }
@@ -43,10 +43,14 @@ MenuRun : all
 	--
 	if lastTalk != "" //What this does is check to see if the ghost has already said a random bit of dialogue on its own, essentially by seeing if the lastTalk thing is NOT empty (!= means "does not equal").
 	{
-	  "\![*]\q[Repeat Last Dialogue,OnLastTalk]\n\n[half]"
+	  "\![*]\q[What'd you say?,OnLastTalk]\n\n[half]"
+	  "\![*]\q[What was that?,OnLastTalk]\n\n[half]"
+	  "\![*]\q[Repeat that!,OnLastTalk]\n\n[half]"
 	}
 	--
- 	"\![*]\q[Say something,OnAiTalk]\n"
+ 	"\![*]\q[Speak!,OnAiTalk]\n"
+	"\![*]\q[Say something nerd,OnAiTalk]\n"
+	"\![*]\q[What's up?,OnAiTalk]\n"
 	
 	//"\![*]\q[Say something 2,OnAiTalk]\n"
 	
