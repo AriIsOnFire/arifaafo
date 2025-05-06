@@ -82,7 +82,6 @@ GetWeekDay
 	{"Sat"}
 }
 
-//This is finding out whether it's AM or PM. Leave it alone.
 GetAP
 {
  	if hour >= 0 && hour <= 11
@@ -119,24 +118,23 @@ Select.configmenu
 
 
 //--TalkConfig
-//I commented out birthday and pronoun options, you can uncomment them if you want to add them back.
 
 TalkConfig : all
 {
 	"\0\b[2]\_q\" 
 	
 	{
-		"\![*]\q[Change Name,OnChangeNameMenu]\n"
+		"\![*][Change Name,OnChangeNameMenu]\n"
 	}
 	
 	//If you want your user to set their pronouns, you can uncomment this menu option by removing the two slashes in front. Read more on the walkthrough about commenting.
 	
-	//"\f[bold,1]Your pronouns:\f[bold,0] %(they)/%(them)/%(their) \f[sup,1](\q[Change them?,TEACHPRONOUN])\f[sup,0]\n"
+	"\f[bold,1]Your pronouns:\f[bold,0] %(they)/%(them)/%(their) \f[sup,1](\q[Change them?,TEACHPRONOUN])\f[sup,0]\n"
 	
 	
 	//If you want your user to be able to set their birthday, you can uncomment this menu option.
 	
-	//"\f[bold,1]Your birthday:\f[bold,0] %(birthdayprint) \f[sup,1](\q[Change it?,TEACHBDAY])\f[sup,0]\n"
+	"\f[bold,1]Your birthday:\f[bold,0] %(birthdayprint) \f[sup,1](\q[Change it?,TEACHBDAY])\f[sup,0]\n"
 	
 	
 	
@@ -174,7 +172,7 @@ OnChangeNameMenu : all
     "\![*]\q[Replace Current %(_names),OnChangeName,replace,1]\n"
     "\![*]\q[Add New Name,OnChangeName,add,1]\n"
     if _nameTotal > 1; "\![*]\q[Delete A Name,OnChangeName,delete,1]\n"
-    "\n[half]\![*]\q[Quit Menu,dummy]"
+    "\n[half]\![*]\q[Nevermind,configmenu]"
 }
 
 OnChangeName : all
@@ -254,6 +252,10 @@ OnChangeNameInput : all
 		"\t\*\![enter,nouserbreakmode]\![open,inputbox,OnChangeNameInput,--timeout=-1,--reference=%(_changeType),--reference=2]"
 		"\n\n[half]\![*]\q[Quit Menu,OnQuit,0]"
 	}
+	elseif _namecheck == "ari"
+	{
+		"Oh! Same name! Might be a bit confusing, but thats okay!\![raise,OnChangeName,%(_changeType),%(_step),%(_newName)]"
+	}
 	elseif _nameCheck == "turgle" // You can also add custom responses to certain words, too.
 	{
 		"Who turgled?"
@@ -284,46 +286,13 @@ OnChangeNameInput : all
 
 //This and the next few set up the pronouns, as you can see by the linkedfunction names. If you're not going to add this feature, you can ignore these. I marked where the pronoun section begins and ends with some ascii banners. :3
 
-Select.TEACHPRONOUN : all
+Select.TEACHPRONOUN
 {
-	"\0\s[0]What pronouns do you want?\w5\n\n[half]\_q"
-	"\![*]\q[He-His-Him,choicemasc]\n"
-	"\![*]\q[She-Her-Her,choicefem]\n"	
-	"\![*]\q[They-Their-Them,choiceneither]\e"
+	"\0\s[2]\b2Gimme your pronouns!\w5 \nThey're currently set to '%(they)',\w3 '%(them)',\w3 and '%(their)'.\w5"
+	--
+	"\n\n[half]\_q\![*]\q[He-His-Him,OnPronoTeach,masc] \n\![*]\q[She-Her-Her,OnPronoTeach,femm] \n\![*]\q[They-Their-Them,OnPronoTeach,neit] \n\![*]\q[He-They Mix,OnPronoTeach,heth] \n\![*]\q[She-They Mix,OnPronoTeach,sheth] \n\![*]\q[He-She Mix,OnPronoTeach,undef] \n\![*]\q[It-Its-It,OnPronoTeach,itit] \n\n[half]\![*]\q[I have my own,OnPronoTeach,both] \n\n\![*]\q[No change,OnPronoTeach,cancel] \n\n\![*]\q[Back to Menu,OnPronoTeach,menu] \n\![*]\q[Back to Config Menu,OnPronoTeach,config]\e"
 }
 
-Select.choicemasc
-{
-	presuffix = "masculine"
-	them = "him"
-	they = "he"
-	their = "his"
-	theyre = "he's"
-	--
-	"\0\s[0]The pronouns are now he him and his.\e"
-}
-
-Select.choicefem
-{
-	presuffix = "feminine"
-	them = "her"
-	they = "she"
-	their = "her"
-	theyre = "she's"
-	--
-	"\0\s[0]The pronouns are now she her and her.\e"
-}
-
-Select.choiceneither
-{
-	presuffix = "undefine"
-	them = "them"
-	they = "they"
-	their = "their"
-	theyre = "they're"
-	--
-	"\0\s[0]The pronouns are now they them and their.\e"
-}
 
 //Here are some examples of these envelopes in use.
 //"%(they) left that there."
@@ -379,11 +348,6 @@ Select.deleteoff
 Select.TEACHBDAY
 	{	
 		"\0\s[0]What month were you born? \w8Name or number is fine.\![open,inputbox,OnUserBornMonth,-1]\e"
-		
-		//*********************Advanced User Info*******************************
-		//I'm going to break down the tag there at the end of the sentence so you know what it's doing. Basically, \! means a function is going to happen, open tells it to open something, inputbox tells it to open an input box, and OnUserBornMonth is the function the input box will be linked to, which is just below here. -1 means the input box should not time out. If you want to add input boxes to some new function for whatever reason, you should follow this basic format.
-		//On a related note, you can raise any function at the end of any piece of dialogue by using this format - \![raise,InsertFunctionName]. This can be handy for testing things if the function is hard to get to run otherwise.
-		//***********************************************************************
 	}
 
 //--OnUserBornMonth
@@ -422,7 +386,6 @@ OnUserBornMonth
 	"\![open,inputbox,OnUserBornDay,-1]\![set,balloontimeout,-1]\e"
 }
 
-//This adds an appropriate suffix to the number for the day. No need to mess with this.
 
 Printday
 {
@@ -437,7 +400,6 @@ Printday
 }	
 
 //--OnUserBornDay
-//This is much like the above function OnUserBornMonth. It'll take the value the user put in for the day and analyze it.
 
 OnUserBornDay
 {
@@ -501,8 +463,6 @@ birthchecked
 
 
 //--Talk Rate
-//This is when the user chooses to adjust the talk rate in the config menu. The talk rate is how often the ghost will read some dialogue from aitalk.dic.
-
 
 Select.talkinter : all
  	{
