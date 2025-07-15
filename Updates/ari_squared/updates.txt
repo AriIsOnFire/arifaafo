@@ -7,7 +7,7 @@ file,ghost/master/ari_anchor.dic9495ca3bc29065ed2d8e412838c650efsize=2237date
 file,ghost/master/ari_bootend.dic75b842a9025a8a362e59ef0ed033a363size=11641date=2025-05-06T15:37:26
 file,ghost/master/ari_commu.dic25d50da676e84ffbdc92fbc31bb6ee51size=3816date=2023-09-28T19:38:11
 file,ghost/master/ari_etc.dicca14b149bdb28ce80d48d9119948dbc9size=15551date=2024-06-11T12:08:55
-file,ghost/master/ari_menu.dic61f651740e0443d7c1440be94b272c6csize=21299date=2025-05-06T16:16:17
+file,ghost/master/ari_menu.dic91c018e4396aef5fc95e9989293ded6asize=21300date=2025-07-14T23:45:42
 file,ghost/master/ari_mouse.dic97ed6868dce54a5ec63acb51a859603fsize=4853date=2024-02-22T20:52:09
 file,ghost/master/ari_nameteach.dic3c32f7ef2d550c3bef5514c81d8f75cdsize=2804date=2025-05-06T16:04:58
 file,ghost/master/ari_string.dic3289ed46adfd72fb2a3a9d163959051dsize=6010date=2024-02-22T21:42:33
