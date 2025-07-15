@@ -11,7 +11,7 @@ exampleenvelope
 internalenvelope
 {
 	"Internal Envelope Dialogue 1 - %(exampleenvelope)"
-	"%(username)'s computer"
+	"%(names)'s computer"
 	"Here is a blanklist object - %(blanklist)."
 }
 
@@ -60,9 +60,9 @@ blanklist
 
 usersfolder
 {
-	"%(username)'s Recycle Bin"
-	"%(username)'s Document folder"
-	"%(username)'s secret folder"
+	"%(names)'s Recycle Bin"
+	"%(names)'s Document folder"
+	"%(names)'s secret folder"
 }
 
 lessonkor

@@ -121,24 +121,20 @@ Select.configmenu
 
 TalkConfig : all
 {
-	"\0\b[2]\_q\" 
+	"\0\b[2]\" 
 	
 	{
-		"\![*][Change Name,OnChangeNameMenu]\n"
+		"\![*]\q[Change Name,OnChangeNameMenu]\n"
 	}
 	
-	//If you want your user to set their pronouns, you can uncomment this menu option by removing the two slashes in front. Read more on the walkthrough about commenting.
-	
-	"\f[bold,1]Your pronouns:\f[bold,0] %(they)/%(them)/%(their) \f[sup,1](\q[Change them?,TEACHPRONOUN])\f[sup,0]\n"
+	"\f[bold,1]Your pronouns:\f[bold,default] %(they)/%(them)/%(their) \f[sup,1](\q[Change them?,TEACHPRONOUN])\f[sup,default]\n"
 	
 	
-	//If you want your user to be able to set their birthday, you can uncomment this menu option.
-	
-	"\f[bold,1]Your birthday:\f[bold,0] %(birthdayprint) \f[sup,1](\q[Change it?,TEACHBDAY])\f[sup,0]\n"
+	"\f[bold,1]Your birthday:\f[bold,default] %(birthdayprint) \f[sup,1](\q[Change it?,TEACHBDAY])\f[sup,default]\n"
 	
 	
 	
-	"\n\f[bold,1]Talk Rate:\f[bold,0] - every %(talktime) \f[sup,1](\q[Change it,talkinter])\f[sup,0]\n\n"
+	"\n\f[bold,1]Talk Rate:\f[bold,default] - every %(talktime) \f[sup,1](\q[Change it,talkinter])\f[sup,default]\n\n"
 	
 	
 	
@@ -288,9 +284,7 @@ OnChangeNameInput : all
 
 Select.TEACHPRONOUN
 {
-	"\0\s[2]\b2Gimme your pronouns!\w5 \nThey're currently set to '%(they)',\w3 '%(them)',\w3 and '%(their)'.\w5"
-	--
-	"\n\n[half]\_q\![*]\q[He-His-Him,OnPronoTeach,masc] \n\![*]\q[She-Her-Her,OnPronoTeach,femm] \n\![*]\q[They-Their-Them,OnPronoTeach,neit] \n\![*]\q[He-They Mix,OnPronoTeach,heth] \n\![*]\q[She-They Mix,OnPronoTeach,sheth] \n\![*]\q[He-She Mix,OnPronoTeach,undef] \n\![*]\q[It-Its-It,OnPronoTeach,itit] \n\n[half]\![*]\q[I have my own,OnPronoTeach,both] \n\n\![*]\q[No change,OnPronoTeach,cancel] \n\n\![*]\q[Back to Menu,OnPronoTeach,menu] \n\![*]\q[Back to Config Menu,OnPronoTeach,config]\e"
+	"\0\s[0] This is currently non-functional. Sorry :(
 }
 
 

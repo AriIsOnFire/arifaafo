@@ -109,7 +109,7 @@ Select.choicefirsttheythem
 NameInput
 {
 	
-	"\0\s[5]Great! \w8\s[8]Now.\w8.\w8.\w8\s[0] What's your name?\![open,inputbox,OnNameTeach,-1]\e"
+	"\0\s[5]Great! You can change them later, if these options weren't any of what you wanted. Just go to the config menu!\w8\s[8]Now.\w8.\w8.\w8\s[0] What's your name?\![open,inputbox,OnNameTeach,-1]\e"
 }
 
 //&&&&&&&

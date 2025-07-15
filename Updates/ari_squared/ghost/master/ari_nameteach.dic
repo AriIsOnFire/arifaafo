@@ -36,10 +36,10 @@ OnNameTeach
 	reference0 = REPLACE(reference0,"-","") //removes dashes
 	
 	
-	if reference0 == "ari" || reference0 == "icarus"
+	if reference0 == "ari"
 	{
 		username = tempname
-		"\0\s[0]That's of my names!\w8 Might be confusing... Bahh, priorities. Nice to meet you!\e"
+		"\0\s[0]That's my name!\w8 Might be confusing... Bahh, priorities. Nice to meet you!\e"
 		//Note here that it's using the same tag as above to reopen the text box to let the user put in another name.
 	}
 	elseif reference0 == "triangle"
@@ -75,143 +75,5 @@ NameDone
 	//Rewrite this as you like. Note the %(username) tag here, as you should be well familiar with by now from the walkthrough and the other .dic files. That will display the name the user just created.
 	}	
 }
-//This code was stolen from the Frisk ghost by KFC!!! Thanks so much lol
-OnPronoTeach
-{
-	if reference0 == "masc"
-	{
-		selfpresuffix = "masculine"
-	}
-	elseif reference0 == "femm"
-	{
-		selfpresuffix = "feminine"
-	}
-	elseif reference0 == "neit"
-	{
-		selfpresuffix = "undefined"
-	}
-	elseif reference0 == "heth"
-	{
-		selfpresuffix = "hethey"
-	}
-	elseif reference0 == "sheth"
-	{
-		selfpresuffix = "shethey"
-	}
-	elseif reference0 == "undef"
-	{
-		selfpresuffix = "shehe"
-	}
-	elseif reference0 == "itit"
-	{
-		selfpresuffix = "itundef"
-	}
-	elseif reference0 == "both"
-	{
-		"\0\s[5]Oh, Neat!\w8 \s[6]\nWhy don't we start with what you use in place of 'him / her / them'?\w8 \n\n[half]\s[2]Go ahead and input it!\w5"
-		
-		"\0\s[6]What are your pronouns for 'him / her / them'?\w8 \n\s[5]Why don't ya input it?\w5"
-		--
-		"\![open,inputbox,OnthemTeach,-1]\e"
-	}
-	elseif reference0 == "menu"
-	{
-		OnMenuRun
-	}
-	elseif reference0 == "config"
-	{
-		OnTalkConfig
-	}
-	else //cancel
-	{
-		"\0\s[0]Okayokayokay,\w8 \s[2]Keep using '%(they)',\w3 '%(them)',\w3 and '%(their)' for %(names)...\w8"
-		--
-		"\_q\n\n[half]\![*]\q[Back to Main menu,BACKTOMENU]   \![*]\q[Back to Config menu,configmenu] \n\![*]\q[Cancel,CANCEL]\e"
-	}
-	--
-	"\0\s[5]I'll use '%(they)',\w3 '%(them)'\w3 and '%(their)' for you!\w8\w8"
-	--
-	if selfpresuffix == "hethey" || selfpresuffix == "shethey" || selfpresuffix == "shehe"
-	{
-		"\s[8]\n\n[half]Haha, Kinda like me!\w8\w8"
-	}
-	--
-	"\_q\n\n[half]\![*]\q[Back to Main menu,BACKTOMENU]   \![*]\q[Back to Config menu,configmenu] \n\![*]\q[Cancel,CANCEL]\e"
-}
 
-	
-OnthemTeach
-{
-	them = reference0
-	
-	if reference0 == ""
-	{
-		them = "hir"
-	}
-	OnPronounTeach2
-}
 
-OnPronounTeach2
-{
-	"\0\s[5]Right, okay, '%(them)'...\w8 \n\n[half]\s[2]And, uh...\w3 what about for 'he / she / they'?\w8"
-	--
-	"\![open,inputbox,OntheyTeach,-1]"
-}
-	
-OntheyTeach
-{
-	they = reference0
-	
-	if reference0 == ""
-	{
-		they = "zie"
-	}
-	OnPronounTeach3
-}
-	
-OnPronounTeach3
-{
-	"\0\s[6]Okayokayokay...'%(they)',\w3 got it.\w8 \n\n[half]\s[2]What about for 'his / her / their'?\w8"
-	--
-	"\![open,inputbox,OntheirTeach,-1]"
-}
-
-OntheirTeach
-{
-	their = reference0
-	
-	if reference0 == ""
-	{
-		their = "hirs"
-	}
-	OnPronounTeach1
-}
-
-OnPronounTeach1
-{
-	"\0\s[5]Nodnodnod, '%(their)'.\w8 \s[0]\n\n[half]Finally,\w4 for 'he's / she's / they're'?\w8"
-	--
-	"\![open,inputbox,OntheyreTeach,-1]"
-}
-
-OntheyreTeach
-{
-	theyre = reference0
-	//reference0 = REPLACE(reference0," ","") //removes spaces
-	//reference0 = REPLACE(reference0,"'","") //removes apostrophes
-	
-	if reference0 == ""
-	{
-		theyre = "zie's"
-	}
-	OnPronounDone
-}
-
-OnPronounDone
-{
-	selfpresuffix = "own"
-	
-	"\0\s[2]Tahdahh! Now you have your own set of pronouns for me to use! They are '%(they)',\w3 '%(them)',\w3 and '%(their)'.\w8 \n\s[5]Awesome cool!\w8"
-	--
-	"\_q\n\n[half]\![*]\q[Back to Main menu,BACKTOMENU]   \![*]\q[Back to Config menu,configmenu] \n\![*]\q[Cancel,CANCEL]\e"
-}
